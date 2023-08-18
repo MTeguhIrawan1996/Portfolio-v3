@@ -45,6 +45,22 @@
     cursor: url('/images/new-tab.png') 10 10, pointer;
   }
 
+  /* Wrapper */
+
+  .root-wrapper {
+    @apply flex flex-col justify-center gap-8 bg-red-100 py-4;
+  }
+
+  .inner-wrapper {
+    @apply w-full bg-green-400 px-4 py-2;
+  }
+
+  .container-wrapper {
+    @apply container mx-auto bg-yellow-200 p-4;
+  }
+
+  /* End Wrapper */
+
   /* #region  /**=========== Typography =========== */
   .h0 {
     @apply font-primary text-3xl font-bold md:text-5xl;
@@ -78,7 +94,7 @@
 
   .layout {
     /* 1100px */
-    max-width: 68.75rem;
+    max-width: 1580px;
     @apply mx-auto w-11/12;
   }
 

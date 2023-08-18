@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { showLogger } from '@/constant/env';
 
 /**
@@ -9,6 +8,7 @@ import { showLogger } from '@/constant/env';
 export default function logger(object: unknown, comment?: string): void {
   if (!showLogger) return;
 
+  // eslint-disable-next-line no-console
   console.log(
     '%c ============== INFO LOG \n',
     'color: #22D3EE',

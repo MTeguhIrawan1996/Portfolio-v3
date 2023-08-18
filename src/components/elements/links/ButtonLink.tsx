@@ -1,52 +1,62 @@
 import * as React from 'react';
 import { IconType } from 'react-icons';
-import { ImSpinner2 } from 'react-icons/im';
 
-import clsxm from '@/lib/clsxm';
+import UnstyledLink, {
+  UnstyledLinkProps,
+} from '@/components/elements/links/UnstyledLink';
 
-const IconButtonVariant = [
+import clsxm from '@/utils/lib/clsxm';
+
+const ButtonLinkVariant = [
   'primary',
   'outline',
   'ghost',
   'light',
   'dark',
 ] as const;
+const ButtonLinkSize = ['sm', 'base'] as const;
 
-type IconButtonProps = {
-  isLoading?: boolean;
+type ButtonLinkProps = {
   isDarkBg?: boolean;
-  variant?: (typeof IconButtonVariant)[number];
-  icon?: IconType;
-  iconClassName?: string;
-} & React.ComponentPropsWithRef<'button'>;
+  variant?: (typeof ButtonLinkVariant)[number];
+  size?: (typeof ButtonLinkSize)[number];
+  leftIcon?: IconType;
+  rightIcon?: IconType;
+  leftIconClassName?: string;
+  rightIconClassName?: string;
+} & UnstyledLinkProps;
 
-const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
+const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   (
     {
+      children,
       className,
-      disabled: buttonDisabled,
-      isLoading,
       variant = 'primary',
+      size = 'base',
       isDarkBg = false,
-      icon: Icon,
-      iconClassName,
+      leftIcon: LeftIcon,
+      rightIcon: RightIcon,
+      leftIconClassName,
+      rightIconClassName,
       ...rest
     },
     ref
   ) => {
-    const disabled = isLoading || buttonDisabled;
-
     return (
-      <button
+      <UnstyledLink
         ref={ref}
-        type='button'
-        disabled={disabled}
+        {...rest}
         className={clsxm(
-          'inline-flex items-center justify-center rounded font-medium',
+          'inline-flex items-center rounded font-medium',
           'focus-visible:ring-primary-500 focus:outline-none focus-visible:ring',
           'shadow-sm',
           'transition-colors duration-75',
-          'min-h-[28px] min-w-[28px] p-1 md:min-h-[34px] md:min-w-[34px] md:p-2',
+          //#region  //*=========== Size ===========
+          [
+            size === 'base' && ['px-3 py-1.5', 'text-sm md:text-base'],
+            size === 'sm' && ['px-2 py-1', 'text-xs md:text-sm'],
+          ],
+          //#endregion  //*======== Size ===========
           //#region  //*=========== Variants ===========
           [
             variant === 'primary' && [
@@ -84,30 +94,49 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
           ],
           //#endregion  //*======== Variants ===========
           'disabled:cursor-not-allowed',
-          isLoading &&
-            'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait',
           className
         )}
-        {...rest}
       >
-        {isLoading && (
+        {LeftIcon && (
           <div
-            className={clsxm(
-              'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2',
-              {
-                'text-white': ['primary', 'dark'].includes(variant),
-                'text-black': ['light'].includes(variant),
-                'text-primary-500': ['outline', 'ghost'].includes(variant),
-              }
-            )}
+            className={clsxm([
+              size === 'base' && 'mr-1',
+              size === 'sm' && 'mr-1.5',
+            ])}
           >
-            <ImSpinner2 className='animate-spin' />
+            <LeftIcon
+              className={clsxm(
+                [
+                  size === 'base' && 'md:text-md text-md',
+                  size === 'sm' && 'md:text-md text-sm',
+                ],
+                leftIconClassName
+              )}
+            />
           </div>
         )}
-        {Icon && <Icon className={clsxm(iconClassName)} />}
-      </button>
+        {children}
+        {RightIcon && (
+          <div
+            className={clsxm([
+              size === 'base' && 'ml-1',
+              size === 'sm' && 'ml-1.5',
+            ])}
+          >
+            <RightIcon
+              className={clsxm(
+                [
+                  size === 'base' && 'text-md md:text-md',
+                  size === 'sm' && 'md:text-md text-sm',
+                ],
+                rightIconClassName
+              )}
+            />
+          </div>
+        )}
+      </UnstyledLink>
     );
   }
 );
 
-export default IconButton;
+export default ButtonLink;
