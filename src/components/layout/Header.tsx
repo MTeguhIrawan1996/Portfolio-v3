@@ -1,31 +1,42 @@
 import * as React from 'react';
+import { HiMoon } from 'react-icons/hi';
 
-import { UnstyledLink } from '@/components/elements';
+import { IconButton } from '@/components/elements';
 
 const links = [
-  { href: '/', label: 'Route 1' },
-  { href: '/', label: 'Route 2' },
+  { href: '/', label: 'Home' },
+  { href: '/', label: 'About' },
+  { href: '/', label: 'Work' },
+  { href: '/', label: 'Skill' },
+  { href: '/', label: 'Contact' },
 ];
 
 export default function Header() {
   return (
-    <header className='sticky top-0 z-50'>
-      <div className='layout flex h-14 items-center justify-between'>
-        <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
-          Home
-        </UnstyledLink>
-        <nav>
-          <ul className='flex items-center justify-between space-x-4'>
-            {links.map(({ href, label }) => (
-              <li key={`${href}${label}`}>
-                <UnstyledLink href={href} className='hover:text-gray-600'>
-                  {label}
-                </UnstyledLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
+    <header className='bg-transparent'>
+      <nav
+        className='layout flex h-16 items-center justify-between'
+        aria-label='Global'
+      >
+        <div className='flex gap-x-6'>
+          {links.map((value, i) => (
+            <a
+              href='#'
+              className='hover:text-hover animated-hover text-dark text-lg font-bold leading-6'
+              key={i}
+            >
+              {value.label}
+            </a>
+          ))}
+        </div>
+        <div className='flex flex-1 justify-end'>
+          <IconButton
+            icon={HiMoon}
+            variant='outline'
+            className='animated-hover hover:text-hover text-dark hover:border-hover border-dark group hover:bg-transparent'
+          />
+        </div>
+      </nav>
     </header>
   );
 }
