@@ -1,7 +1,12 @@
+import { useTheme } from 'next-themes';
 import * as React from 'react';
 import { HiMoon } from 'react-icons/hi';
 
 import { IconButton } from '@/components/elements';
+
+import clsxm from '@/utils/lib/clsxm';
+
+// import useStoreTheme from '@/utils/store/useStoreTheme';
 
 const links = [
   { href: '/', label: 'Home' },
@@ -12,8 +17,10 @@ const links = [
 ];
 
 export default function Header() {
+  const { theme, setTheme } = useTheme();
+
   return (
-    <header className='bg-transparent'>
+    <header className={clsxm('sticky top-0 z-50')}>
       <nav
         className='layout flex h-16 items-center justify-between'
         aria-label='Global'
@@ -22,7 +29,7 @@ export default function Header() {
           {links.map((value, i) => (
             <a
               href='#'
-              className='hover:text-hover animated-hover text-dark text-lg font-bold leading-6'
+              className='hover:text-hover animated-hover text-dark dark:text-light dark:hover:text-hover text-base font-semibold leading-6'
               key={i}
             >
               {value.label}
@@ -33,7 +40,10 @@ export default function Header() {
           <IconButton
             icon={HiMoon}
             variant='outline'
-            className='animated-hover hover:text-hover text-dark hover:border-hover border-dark group hover:bg-transparent'
+            className='animated-hover hover:text-hover dark:hover:text-hover text-dark dark:text-light hover:border-hover border-dark dark:border-light group hover:bg-transparent active:bg-transparent'
+            onClick={() =>
+              theme === 'dark' ? setTheme('light') : setTheme('dark')
+            }
           />
         </div>
       </nav>

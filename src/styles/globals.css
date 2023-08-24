@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,100;9..144,200;9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,7 +35,10 @@
 @layer base {
   /* inter var - latin */
   html {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'Fraunces', system-ui, sans-serif;
+  }
+  body {
+    @apply dark:bg-dark bg-white;
   }
 
   .cursor-newtab {
@@ -89,7 +94,7 @@
 
   .layout {
     /* 1100px */
-    max-width: 1580px;
+    max-width: 1280px;
     @apply mx-auto w-11/12;
   }
 
