@@ -1,3 +1,5 @@
+// add import and export here every time you create a new element
+
 import Button from '@/components/elements/buttons/Button';
 import IconButton from '@/components/elements/buttons/IconButton';
 import TextButton from '@/components/elements/buttons/TextButton';

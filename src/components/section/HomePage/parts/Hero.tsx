@@ -76,6 +76,7 @@ const Hero = () => {
   const renderImage = images.map(imageCallback);
 
   return (
+    // add innerWrapper at new part
     <InnerWrapper>
       <div className='flex flex-col justify-center p-6 lg:flex-row'>
         <div className='my-auto flex-1 p-6'>

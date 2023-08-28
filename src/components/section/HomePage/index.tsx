@@ -1,12 +1,13 @@
 import * as React from 'react';
 
 import { RootWrapper } from '@/components/elements';
-import Hero from '@/components/section/HomePage/parts/Hero';
 
 const Home = () => {
   return (
+    // add Root Wrapper at new section
     <RootWrapper>
-      <Hero />
+      {/* Add code part hare */}
+      <div className=''>Page</div>
     </RootWrapper>
   );
 };
