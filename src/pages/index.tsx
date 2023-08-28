@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Layout from '@/components/layout/Layout';
-import { Beranda } from '@/components/section';
+import { Home } from '@/components/section';
 
 /**
  * SVGR Support
@@ -12,7 +12,7 @@ import { Beranda } from '@/components/section';
  */
 
 export default function HomePage() {
-  return <Beranda />;
+  return <Home />;
 }
 
 HomePage.getLayout = function getLayout(page: React.ReactElement) {

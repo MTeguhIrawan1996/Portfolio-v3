@@ -6,7 +6,7 @@ interface IRootWrapperProps {
 }
 
 const RootWrapper: React.FC<IRootWrapperProps> = ({ children }) => {
-  return <div className='root-wrapper'>{children}</div>;
+  return <main className='root-wrapper'>{children}</main>;
 };
 
 export default RootWrapper;

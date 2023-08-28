@@ -1,3 +1,2 @@
-import Beranda from '@/components/section/BerandaPage';
-
-export { Beranda };
+import Home from '@/components/section/HomePage';
+export { Home };

@@ -27,6 +27,8 @@ export default {
         hover: '#ff8906',
         dark: '#0f0e17',
         light: '#fffffe',
+        primaryText: '#2A2C32',
+        secondaryText: '#a7a9be',
       },
       keyframes: {
         flicker: {
