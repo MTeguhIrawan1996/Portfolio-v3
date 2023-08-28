@@ -18,9 +18,34 @@ const links = [
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
+  const navbarRef = React.useRef<HTMLElement | null>(null);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      // Mendapatkan nilai scroll position
+      const scrollPos = window.scrollY;
+
+      // Menentukan apakah navbar perlu di-fix atau tidak
+      if (scrollPos > 64) {
+        navbarRef.current?.classList.add('shadow-md');
+      } else {
+        navbarRef.current?.classList.remove('shadow-md');
+      }
+    };
+    // Menambahkan event listener pada event scroll
+    window.addEventListener('scroll', handleScroll);
+
+    // Menghapus event listener saat component di-unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <header className={clsxm('sticky top-0 z-50')}>
+    <header
+      ref={navbarRef}
+      className={clsxm('bg-light dark:bg-dark sticky top-0 z-50')}
+    >
       <nav
         className='layout flex h-16 items-center justify-between'
         aria-label='Global'
