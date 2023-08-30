@@ -1,4 +1,11 @@
+// This file sets a custom webpack configuration to use your Next.js app
+// with Sentry.
+// https://nextjs.org/docs/api-reference/next.config.js/introduction
+// https://docs.sentry.io/platforms/javascript/guides/nextjs/
 /** @type {import('next').NextConfig} */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { withSentryConfig } = require('@sentry/nextjs');
+
 const nextConfig = {
   eslint: {
     dirs: ['src'],
@@ -6,6 +13,10 @@ const nextConfig = {
 
   reactStrictMode: true,
   swcMinify: true,
+  i18n: {
+    locales: ['id'],
+    defaultLocale: 'id',
+  },
 
   // Uncoment to add domain whitelist
   // images: {
@@ -32,6 +43,15 @@ const nextConfig = {
 
     return config;
   },
+  sentry: {
+    disableServerWebpackPlugin: true,
+    disableClientWebpackPlugin: true,
+    autoInstrumentServerFunctions: true,
+  },
 };
 
-module.exports = nextConfig;
+const sentryWebpackPluginOptions = {
+  silent: true, // Suppresses all logs
+};
+
+module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);

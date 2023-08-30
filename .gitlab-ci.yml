@@ -1,0 +1,15 @@
+default:
+  image: node:18.6.0-slim
+
+vercel:
+  variables:
+    VERCEL_TOKEN: pKHtt6UJjyHKAeUGCwMwtcTK
+  stage: deploy
+  only:
+    - preview
+  script:
+    - npm install --global vercel
+    - vercel link --token=$VERCEL_TOKEN --project=optimap-landing-page --yes
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+    - vercel build --token=$VERCEL_TOKEN
+    - vercel deploy --token=$VERCEL_TOKEN --prod
