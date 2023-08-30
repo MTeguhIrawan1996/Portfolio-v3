@@ -5,7 +5,7 @@ import Header from '@/components/layout/Header';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute='class'>
+    <ThemeProvider attribute='class' defaultTheme='dark' enableSystem={false}>
       <Header />
       {children}
     </ThemeProvider>

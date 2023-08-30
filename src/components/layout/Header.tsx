@@ -54,7 +54,7 @@ export default function Header() {
           {links.map((value, i) => (
             <a
               href='#'
-              className='hover:text-hover animated-hover text-dark dark:text-light dark:hover:text-hover text-base font-semibold leading-6'
+              className='hover:text-orangePrimary animated-hover text-dark dark:text-light dark:hover:text-orangePrimary text-base font-semibold leading-6'
               key={i}
             >
               {value.label}
@@ -65,7 +65,7 @@ export default function Header() {
           <IconButton
             icon={HiMoon}
             variant='outline'
-            className='animated-hover hover:text-hover dark:hover:text-hover text-dark dark:text-light hover:border-hover border-dark dark:border-light group hover:bg-transparent active:bg-transparent'
+            className='animated-hover hover:text-orangePrimary dark:hover:text-orangePrimary text-dark dark:text-light hover:border-orangePrimary border-dark dark:border-light group hover:bg-transparent active:bg-transparent'
             onClick={() =>
               theme === 'dark' ? setTheme('light') : setTheme('dark')
             }

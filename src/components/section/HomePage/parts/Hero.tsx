@@ -1,5 +1,4 @@
 import Image, { StaticImageData } from 'next/image';
-import { useTheme } from 'next-themes';
 import * as React from 'react';
 import { HiArrowRight } from 'react-icons/hi';
 
@@ -23,8 +22,6 @@ type images = {
 };
 
 const Hero = () => {
-  const { theme } = useTheme();
-
   const images: images[] = [
     {
       src: Profile,
@@ -77,8 +74,8 @@ const Hero = () => {
 
   return (
     <InnerWrapper>
-      <div className='flex flex-col justify-center p-6 lg:flex-row'>
-        <div className='my-auto flex-1 p-6'>
+      <div className='flex w-full flex-col justify-center lg:flex-row'>
+        <div className='my-auto flex-1'>
           <div className='mx-auto flex max-w-xl flex-col items-start justify-center gap-4'>
             <div className='flex flex-col gap-2'>
               <div className='flex gap-1'>
@@ -89,17 +86,15 @@ const Hero = () => {
               </div>
               <h1 className='h0 text-primaryText dark:text-light font-semibold leading-tight'>
                 I'm M Teguh Irawan! a{' '}
-                <span className='text-hover drop-shadow-lg'>Frontend </span>
+                <span className='text-gradient'>Frontend </span>
                 Developer
               </h1>
             </div>
             <span className='text-primaryText dark:text-light'>
               teguhirawan@gmail.com
             </span>
-
             <Button
-              variant={theme === 'dark' ? 'light' : 'dark'}
-              className='hover:bg-hover border-none shadow-lg dark:shadow-orange-500/50'
+              className='hover:bg-orangePrimary animated-hover border-none shadow-lg dark:shadow-orange-500/50'
               rightIcon={HiArrowRight}
             >
               Contact me
@@ -107,7 +102,7 @@ const Hero = () => {
           </div>
         </div>
         <div className='relative flex h-[450px] flex-1 items-center justify-center'>
-          <div className='bg-dark/20 dark:bg-light/30 absolute aspect-square w-[500px] rounded-full shadow-2xl shadow-orange-500/50 drop-shadow-lg' />
+          <div className='bg-dark/20 dark:bg-light/30 absolute aspect-square w-[350px] rounded-full shadow-2xl shadow-orange-500/50 drop-shadow-lg md:w-[500px]' />
           <figure className='relative aspect-square w-[450px]'>
             {renderImage}
           </figure>

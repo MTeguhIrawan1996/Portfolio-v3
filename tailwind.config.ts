@@ -24,7 +24,7 @@ export default {
           900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
           950: 'rgb(var(--tw-color-primary-950) / <alpha-value>)',
         },
-        hover: '#ff8906',
+        orangePrimary: '#ff8906',
         dark: '#0f0e17',
         light: '#fffffe',
         primaryText: '#2A2C32',
